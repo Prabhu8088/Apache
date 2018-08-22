@@ -8,10 +8,8 @@ package 'httpd' do
   action [:install]
 end
 
-file '/var/www/html/index.html' do
-  content "<h1> Welcome to Chef </h1>
-  Hostname: #{node['hostname']}
-  Ipaddress: #{node['ipaddress']}"
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
 end
 
 service 'httpd' do
